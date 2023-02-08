@@ -1,9 +1,7 @@
 import { useState, useEffect } from "react";
 import { getWeatherData } from "../api/api";
-import dropWater from "../assets/drop-Water.svg";
-import wind from "../assets/wind.svg";
-import thermometr from "../assets/thermometer-thermometer.svg";
-import arrow from '../assets/arrow-rightInvalid.svg'
+import thermometr from "../assets/thermometr2.svg";
+import geo from "../assets/geo.svg";
 
 function card() {
   const [weather, setWeather]: any = useState("");
@@ -39,12 +37,16 @@ function card() {
           ></input>
         </div>
       </div>
-      <div className="CardHolder">
+
+      <div className="CardContainer">
         <div className="Card">
-          <div className="headCard">
-            <h1 className="residence">
-              {`${weather.name} ${weather.localtime}`}{" "}
-            </h1>
+          <div className="geoLocation">
+            {`${weather.name}`}
+            <img src={geo}></img>
+          </div>
+          <div className="mainCenter">
+            <img src={thermometr} width="44px" height="44px"></img>
+            {`${weather.temp_c}°C`}
             <img
               src={weather.iconURL}
               width="64px"
@@ -52,32 +54,12 @@ function card() {
               alt="icon display weather and time"
             ></img>
           </div>
-          {/* <div>{`${weather.text}`}</div> */}
-          <div className="boxMainWeather">
-            {`${weather.temp_c} °C`} <img src={thermometr} width="32px"></img>
-          </div>
-          {/* <span className="feelslike">{`Ощущается как: ${weather.feelslike_c} °C`}</span> */}
-          <div className="boxWind">
-            {`Ветер: ${weather.wind_mph} м/ч`}
-            {/* <img
-              src={wind}
-              className="boxWind"
-              width="32px"
-              alt="icon wind"
-            ></img> */}
-          </div>
-          <div className="boxHumidity">
-            <div>{`Влажность: ${weather.humidity} %`}</div>
-            {/* <img
-              src={dropWater}
-              className="iconDropWater"
-              width="32px"
-              alt="icon dropwater"
-            ></img> */}
-          </div>
-          <div className="Visual">
-            
-            <img src={arrow} width='42px' height='42px'></img>
+          <div className="dayInfo">{`${weather.localtime} Среда`}</div>
+          <div className="nameBottom">
+            <div className="dataBottom">Влажность 50%</div>
+            <div className="dataBottom">{`Видимость ${weather.vis_km} км`}</div>
+            <div className="dataBottom">{`Давление ${weather.pressure_mb} мб`}</div>
+            <div className="dataBottom">{`Ветер ${weather.wind_mph} м`}</div>
           </div>
         </div>
       </div>

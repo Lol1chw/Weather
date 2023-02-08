@@ -8,8 +8,14 @@ body {
   display: grid;
   height: 100vh;
   grid-template-rows: auto 1fr auto;
-  
-  background: linear-gradient(63.82deg, #05159E 0%, #D7FDFF 125.57%, #84D3FF 125.58%) repeat;
+
+  background: linear-gradient(
+      63.82deg,
+      #05159e 0%,
+      #d7fdff 125.57%,
+      #84d3ff 125.58%
+    )
+    repeat;
 
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;

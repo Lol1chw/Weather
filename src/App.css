@@ -1,16 +1,3 @@
-header {
-  padding: 2rem;
-  display: flex;
-  justify-content: space-between;
-}
-
-.headCard {
-  display: flex;
-  
-  justify-content: space-between;
-  align-items: center;
-}
-
 .searchContainer {
   display: flex;
   justify-content: center;
@@ -30,7 +17,7 @@ header {
   border-radius: 15px;
   min-width: 25vw;
   border: none;
-  background: url(assets\magnifier-svgrepo-com.svg);
+  background: url(assets\magnifier.svg);
   background-position: 10px;
   background-repeat: no-repeat;
   background-size: 16px 16px;
@@ -42,7 +29,7 @@ header {
   outline: solid rgba(176, 224, 230, 0.752);
 }
 
-.CardHolder {
+.CardContainer {
   display: grid;
   grid-gap: 1rem;
   grid-template-columns: repeat(1, 1fr);
@@ -51,59 +38,42 @@ header {
 
 .Card {
   color: white;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  background: #ffffff7d;  
+  background: #ffffff7d;
   padding: 1rem;
   border-radius: 30px;
-  width: 18vw;
-  font-size: 1.3em;
+  width: 25vw;
+  font-size: 1.8em;
   box-shadow: 0px 5px 10px 0px rgb(0 0 0 / 14%);
-  
 }
 
-.residence {
-  margin: 0;
-  font-size: 1.2em;
-  line-height: 1.1;
-}
-
-.boxMainWeather {
+.geoLocation {
   display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: flex-end;
-  gap: 5px;
-  font-weight: 700;
-}
-
-.temperature {
-  font-size: 1.3em;
-  display: flex;
-  justify-content: end;
-  margin: 15px 0px;
-}
-
-.Visual {
-  height: 100px;
-  width: 100%;
-  margin: 0.5rem 0;
-  display: flex;
-  justify-content: flex-end;
-  align-items: flex-end;
-}
-
-.boxWind {
-  display: flex;
-  justify-content: start;
   align-items: center;
   gap: 10px;
+  margin-bottom: 50px;
 }
 
-.boxHumidity {
+.mainCenter {
   display: flex;
-  justify-content: start;
+  justify-content: center;
   align-items: center;
-  gap: 10px;
+  margin-bottom: 50px;
+}
+
+.dayInfo {
+  display: flex;
+  justify-self: start;
+  align-items: center;
+  margin-bottom: 50px;
+}
+
+.nameBottom {
+  display: flex;
+  font-size: 19px;
+  justify-content: space-between;
+}
+
+.dataBottom {
+  text-align: center;
+  width: min-content;
 }
