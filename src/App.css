@@ -1,13 +1,12 @@
 header {
-  background: #fbf9fceb;
   padding: 2rem;
   display: flex;
   justify-content: space-between;
 }
 
-.prikol {
+.headCard {
   display: flex;
-  height: min-content;
+  
   justify-content: space-between;
   align-items: center;
 }
@@ -26,6 +25,7 @@ header {
   min-height: 30px;
   background-color: white;
 }
+
 .search {
   border-radius: 15px;
   min-width: 25vw;
@@ -41,9 +41,6 @@ header {
 :focus {
   outline: solid rgba(176, 224, 230, 0.752);
 }
-.sunIco {
-  width: 50px;
-}
 
 .CardHolder {
   display: grid;
@@ -53,18 +50,20 @@ header {
 }
 
 .Card {
+  color: white;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  background: #c9c0c030;
+  background: #ffffff7d;  
   padding: 1rem;
   border-radius: 30px;
   width: 18vw;
   font-size: 1.3em;
+  box-shadow: 0px 5px 10px 0px rgb(0 0 0 / 14%);
+  
 }
 
 .residence {
-  color: #040202a8;
   margin: 0;
   font-size: 1.2em;
   line-height: 1.1;
@@ -74,11 +73,9 @@ header {
   display: flex;
   flex-direction: row;
   align-items: center;
-  justify-content: flex-start;
-  gap: 5px
-}
-
-.feelslike {
+  justify-content: flex-end;
+  gap: 5px;
+  font-weight: 700;
 }
 
 .temperature {
@@ -92,6 +89,9 @@ header {
   height: 100px;
   width: 100%;
   margin: 0.5rem 0;
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-end;
 }
 
 .boxWind {

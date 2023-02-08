@@ -3,6 +3,7 @@ import { getWeatherData } from "../api/api";
 import dropWater from "../assets/drop-Water.svg";
 import wind from "../assets/wind.svg";
 import thermometr from "../assets/thermometer-thermometer.svg";
+import arrow from '../assets/arrow-rightInvalid.svg'
 
 function card() {
   const [weather, setWeather]: any = useState("");
@@ -40,7 +41,7 @@ function card() {
       </div>
       <div className="CardHolder">
         <div className="Card">
-          <div className="prikol">
+          <div className="headCard">
             <h1 className="residence">
               {`${weather.name} ${weather.localtime}`}{" "}
             </h1>
@@ -51,30 +52,33 @@ function card() {
               alt="icon display weather and time"
             ></img>
           </div>
-          <div>{`${weather.text}`}</div>
+          {/* <div>{`${weather.text}`}</div> */}
           <div className="boxMainWeather">
             {`${weather.temp_c} °C`} <img src={thermometr} width="32px"></img>
           </div>
-          <span className="feelslike">{`Ощущается как: ${weather.feelslike_c} °C`}</span>
+          {/* <span className="feelslike">{`Ощущается как: ${weather.feelslike_c} °C`}</span> */}
           <div className="boxWind">
             {`Ветер: ${weather.wind_mph} м/ч`}
-            <img
+            {/* <img
               src={wind}
               className="boxWind"
               width="32px"
               alt="icon wind"
-            ></img>
+            ></img> */}
           </div>
           <div className="boxHumidity">
             <div>{`Влажность: ${weather.humidity} %`}</div>
-            <img
+            {/* <img
               src={dropWater}
               className="iconDropWater"
               width="32px"
               alt="icon dropwater"
-            ></img>
+            ></img> */}
           </div>
-          <div className="Visual"></div>
+          <div className="Visual">
+            
+            <img src={arrow} width='42px' height='42px'></img>
+          </div>
         </div>
       </div>
     </div>
