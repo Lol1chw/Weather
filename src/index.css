@@ -9,13 +9,7 @@ body {
   height: 100vh;
   grid-template-rows: auto 1fr auto;
 
-  background: linear-gradient(
-      63.82deg,
-      #05159e 0%,
-      #d7fdff 125.57%,
-      #84d3ff 125.58%
-    )
-    repeat;
+  background: #252323;
 
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;

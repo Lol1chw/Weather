@@ -1,3 +1,8 @@
+.container {
+  width: 50vw;
+  margin: 0 auto;
+}
+
 .searchContainer {
   display: flex;
   justify-content: center;
@@ -38,12 +43,14 @@
 
 .Card {
   color: white;
-  background: #ffffff7d;
+  background: linear-gradient(112.67deg, #ad36cb 32.23%, #333333 67.37%);
   padding: 1rem;
   border-radius: 30px;
   width: 25vw;
   font-size: 1.8em;
-  box-shadow: 0px 5px 10px 0px rgb(0 0 0 / 14%);
+  /* box-shadow: 0px 5px 10px 0px rgb(0 0 0 / 14%); */
+  box-shadow: 0px 4px 4px rgba(253, 245, 245, 0.25),
+    0px 4px 4px rgba(255, 250, 250, 0.25), 0px 4px 4px rgba(0, 0, 0, 0.25);
 }
 
 .geoLocation {
@@ -51,6 +58,9 @@
   align-items: center;
   gap: 10px;
   margin-bottom: 50px;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 300;
+  font-size: 0.9em;
 }
 
 .mainCenter {
@@ -58,6 +68,9 @@
   justify-content: center;
   align-items: center;
   margin-bottom: 50px;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 300;
+  font-size: 1.7em;
 }
 
 .dayInfo {
@@ -65,15 +78,38 @@
   justify-self: start;
   align-items: center;
   margin-bottom: 50px;
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.8em;
+  font-weight: 500;
 }
 
 .nameBottom {
   display: flex;
   font-size: 19px;
   justify-content: space-between;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 500;
 }
 
 .dataBottom {
   text-align: center;
   width: min-content;
+}
+
+.header {
+  display: flex;
+  color: white;
+  justify-content: space-around;
+  font-family: 'Poppins', sans-serif;
+}
+
+.header h1 {
+  font-weight: 400px;
+  width: min-content;
+}
+
+.navMenu {
+  display: flex;
+  align-items: center;
+  gap: 10px;
 }
