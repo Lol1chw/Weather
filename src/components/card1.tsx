@@ -54,9 +54,9 @@ function card() {
               alt="icon display weather and time"
             ></img>
           </div>
-          <div className="dayInfo">{`${weather.localtime} Среда`}</div>
+          <div className="dayInfo">{`${weather.localtime}`}</div>
           <div className="nameBottom">
-            <div className="dataBottom">Влажность 50%</div>
+            <div className="dataBottom">{`Влажность ${weather.humidity}%`}</div>
             <div className="dataBottom">{`Видимость ${weather.vis_km} км`}</div>
             <div className="dataBottom">{`Давление ${weather.pressure_mb} мб`}</div>
             <div className="dataBottom">{`Ветер ${weather.wind_mph} м`}</div>
