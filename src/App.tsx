@@ -1,7 +1,9 @@
 import "./App.css";
 import Card from "./components/card1";
 
-function App() {
+
+function App(props: any) {
+
   return (
     <div className="container">
       <div className="header">
@@ -11,7 +13,7 @@ function App() {
           <a>Tommorow</a>
         </div>
       </div>
-      <Card />
+      <Card/>
     </div>
   );
 }

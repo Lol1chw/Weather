@@ -2,11 +2,13 @@ import { useState, useEffect } from "react";
 import { getWeatherData } from "../api/api";
 import thermometr from "../assets/thermometr2.svg";
 import geo from "../assets/geo.svg";
+import Search from "./search";
 
 function card() {
   const [weather, setWeather]: any = useState("");
   const [city, setCity]: any = useState("Новосибирск");
 
+// Fetch data. Check api.tsx
   useEffect(() => {
     const fetchWeatherData = async () => {
       const data = await getWeatherData(city);
@@ -15,29 +17,19 @@ function card() {
     fetchWeatherData();
   }, [city]);
 
+  // Enter perfroms the search function which is in another component (Search) 
   const enter = (e: any) => {
     if (e.key === "Enter") {
       setCity(e.currentTarget.value);
       e.currentTarget.blur();
     }
   };
-
+  
   const time = new Date().toLocaleTimeString();
-
+  
   return (
     <div>
-      <div className="searchContainer">
-        <div className="searchPanel">
-          <input
-            className="search"
-            name="city search"
-            type="search"
-            placeholder="Search"
-            onKeyDown={enter}
-          ></input>
-        </div>
-      </div>
-
+      <Search enter={enter} />
       <div className="CardContainer">
         <div className="Card">
           <div className="geoLocation">
