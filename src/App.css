@@ -19,16 +19,9 @@
 }
 
 .search {
-  border-radius: 15px;
   min-width: 25vw;
-  border: none;
-  background: url(assets\magnifier.svg);
-  background-position: 10px;
-  background-repeat: no-repeat;
-  background-size: 16px 16px;
-  padding: 5px 35px 6px 32px;
-  outline: powderblue;
 }
+
 
 :focus {
   outline: solid rgba(176, 224, 230, 0.752);

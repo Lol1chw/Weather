@@ -8,7 +8,7 @@ function card() {
   const [weather, setWeather]: any = useState("");
   const [city, setCity]: any = useState("Новосибирск");
 
-// Fetch data. Check api.tsx
+  // Fetch data. Check api.tsx
   useEffect(() => {
     const fetchWeatherData = async () => {
       const data = await getWeatherData(city);
@@ -17,19 +17,19 @@ function card() {
     fetchWeatherData();
   }, [city]);
 
-  // Enter perfroms the search function which is in another component (Search) 
+  // Enter perfroms the search function which is in another component (Search)
   const enter = (e: any) => {
     if (e.key === "Enter") {
       setCity(e.currentTarget.value);
       e.currentTarget.blur();
     }
   };
-  
+
   const time = new Date().toLocaleTimeString();
-  
+
   return (
     <div>
-      <Search enter={enter} />
+      <Search setCity={setCity} />
       <div className="CardContainer">
         <div className="Card">
           <div className="geoLocation">

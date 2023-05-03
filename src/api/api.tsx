@@ -1,15 +1,13 @@
 import.meta.env.VITE_API_KEY;
-
 export const keyAPI = import.meta.env.VITE_API_KEY;
 
 const makeIconUrl = (iconId: string) => `${iconId}`;
 
-// 11, 16
 function time(localtime: string) {
   return localtime.substring(11, 16);
 }
 
-export const getWeatherData = async (city: string) => {
+export const getWeatherData = async (city: any) => {
   const URL = `http://api.weatherapi.com/v1/current.json?key=${keyAPI}&lang=ru&q=${city}`;
 
   const data = await fetch(URL)
@@ -17,7 +15,7 @@ export const getWeatherData = async (city: string) => {
     .then((data: any) => data);
 
   const {
-    location: { country, name, localtime },
+    location: { country, name, localtime, region },
     current: { temp_c, wind_mph, humidity, feelslike_c, vis_km, pressure_mb },
     current: {
       condition: { icon, text },
@@ -36,6 +34,7 @@ export const getWeatherData = async (city: string) => {
     vis_km,
     feelslike_c,
     pressure_mb,
+    region,
   };
 };
 

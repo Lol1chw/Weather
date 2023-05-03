@@ -1,28 +1,50 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import Select from "react-select";
+import.meta.env.VITE_API_KEY;
 
-// Interface for provide enter data of event 
+export const keyAPI = import.meta.env.VITE_API_KEY;
+
+// Interface for provide enter data of event
 interface propsSearch {
-    enter: (e: any) => void
+  setCity: any;
 }
 
-
 function search(props: propsSearch) {
+  const [inputValue, setInputValue] = useState("");
+  const [options, setOptions] = useState([]);
 
-  const {enter} = props;
+  const { setCity } = props;
+
+  useEffect(() => {
+    const fetchAutocompleteData = async () => {
+      const url = `http://api.weatherapi.com/v1/search.json?key=${keyAPI}&q=${inputValue}`;
+      const response = await fetch(url);
+      const data = await response.json();
+      const options = data.map((item: { name: string }) => ({
+        value: item.name,
+        label: item.name,
+      }));
+      setOptions(options);
+    };
+    if (inputValue.length > 0) {
+      fetchAutocompleteData();
+    }
+  }, [inputValue]);
 
   return (
     <div className="searchContainer">
       <div className="searchPanel">
-        <input
+        <Select
           className="search"
-          name="city search"
-          type="search"
-          placeholder="Search"
-          onKeyDown={enter}
-        ></input>
+          placeholder="Search..."
+          value={options.find((option) => option.value === inputValue)}
+          options={options}
+          onChange={() => setCity(inputValue)}
+          onInputChange={(inputValue) => setInputValue(inputValue)}
+        />
       </div>
     </div>
-  )
+  );
 }
 
-export default search
+export default search;
