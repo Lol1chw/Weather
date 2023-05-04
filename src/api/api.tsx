@@ -1,3 +1,5 @@
+import { time, makeIconUrl, convertMilesToMeters, convertMbToMm } from "./converters";
+
 import.meta.env.VITE_API_KEY;
 export const keyAPI = import.meta.env.VITE_API_KEY;
 
@@ -26,21 +28,6 @@ interface DataTypes {
   current: current;
 }
 
-const makeIconUrl = (iconId: string) => `${iconId}`;
-
-function time(localtime: string) {
-  return localtime.substring(11, 16);
-}
-
-function convertMilesToMeters(milesPerHour: number): number {
-  const metersPerMile = 1609.34;
-  const secondsPerHour = 3600;
-
-  const metersPerSeconds = (milesPerHour * metersPerMile) / secondsPerHour;
-
-  return parseFloat(metersPerSeconds.toFixed());
-}
-
 export const getWeatherData = async (city: any) => {
   const URL = `http://api.weatherapi.com/v1/current.json?key=${keyAPI}&lang=ru&q=${city}`;
 
@@ -67,7 +54,7 @@ export const getWeatherData = async (city: any) => {
     humidity,
     vis_km,
     feelslike_c,
-    pressure_mb,
+    pressure_mb: convertMbToMm(pressure_mb),
     region,
   };
 };
