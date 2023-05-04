@@ -1,4 +1,9 @@
-import { time, makeIconUrl, convertMilesToMeters, convertMbToMm } from "./converters";
+import {
+  time2,
+  makeIconUrl,
+  convertMilesToMeters,
+  convertMbToMm,
+} from "./converters";
 
 import.meta.env.VITE_API_KEY;
 export const keyAPI = import.meta.env.VITE_API_KEY;
@@ -47,7 +52,7 @@ export const getWeatherData = async (city: any) => {
     iconURL: makeIconUrl(icon),
     country,
     name,
-    localtime: time(localtime),
+    localtime: time2(localtime),
     temp_c,
     text,
     wind_mph: convertMilesToMeters(wind_mph),
@@ -58,11 +63,3 @@ export const getWeatherData = async (city: any) => {
     region,
   };
 };
-
-export default interface dataAsign {
-  icoURL: string;
-  country: string;
-  region: string;
-  localtime: Date;
-  temp_c: number;
-}

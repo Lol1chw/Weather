@@ -22,7 +22,6 @@
   min-width: 25vw;
 }
 
-
 :focus {
   outline: solid rgba(176, 224, 230, 0.752);
 }
