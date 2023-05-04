@@ -17,16 +17,6 @@ function card() {
     fetchWeatherData();
   }, [city]);
 
-  // Enter perfroms the search function which is in another component (Search)
-  const enter = (e: any) => {
-    if (e.key === "Enter") {
-      setCity(e.currentTarget.value);
-      e.currentTarget.blur();
-    }
-  };
-
-  const time = new Date().toLocaleTimeString();
-
   return (
     <div>
       <Search setCity={setCity} />
@@ -51,7 +41,7 @@ function card() {
             <div className="dataBottom">{`Влажность ${weather.humidity}%`}</div>
             <div className="dataBottom">{`Видимость ${weather.vis_km} км`}</div>
             <div className="dataBottom">{`Давление ${weather.pressure_mb} мб`}</div>
-            <div className="dataBottom">{`Ветер ${weather.wind_mph} м`}</div>
+            <div className="dataBottom">{`Ветер ${weather.wind_mph} м/с`}</div>
           </div>
         </div>
       </div>

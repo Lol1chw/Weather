@@ -1,10 +1,44 @@
 import.meta.env.VITE_API_KEY;
 export const keyAPI = import.meta.env.VITE_API_KEY;
 
+interface location {
+  country: string;
+  name: string;
+  localtime: string;
+  region: string;
+}
+
+interface current {
+  temp_c: number;
+  wind_mph: number;
+  humidity: number;
+  feelslike_c: number;
+  vis_km: number;
+  pressure_mb: number;
+  condition: {
+    icon: string;
+    text: string;
+  };
+}
+
+interface DataTypes {
+  location: location;
+  current: current;
+}
+
 const makeIconUrl = (iconId: string) => `${iconId}`;
 
 function time(localtime: string) {
   return localtime.substring(11, 16);
+}
+
+function convertMilesToMeters(milesPerHour: number): number {
+  const metersPerMile = 1609.34;
+  const secondsPerHour = 3600;
+
+  const metersPerSeconds = (milesPerHour * metersPerMile) / secondsPerHour;
+
+  return parseFloat(metersPerSeconds.toFixed());
 }
 
 export const getWeatherData = async (city: any) => {
@@ -20,7 +54,7 @@ export const getWeatherData = async (city: any) => {
     current: {
       condition: { icon, text },
     },
-  } = data;
+  }: DataTypes = data;
 
   return {
     iconURL: makeIconUrl(icon),
@@ -29,7 +63,7 @@ export const getWeatherData = async (city: any) => {
     localtime: time(localtime),
     temp_c,
     text,
-    wind_mph,
+    wind_mph: convertMilesToMeters(wind_mph),
     humidity,
     vis_km,
     feelslike_c,
