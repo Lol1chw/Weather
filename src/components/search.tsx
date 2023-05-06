@@ -25,17 +25,29 @@ function search(props: propsSearch) {
       const response = await fetch(url);
       const data = await response.json();
       if (data) {
-        const options: OptionType[] = data.map((item: { name: string }) => ({
-          value: item.name,
-          label: item.name,
-        }));
-        setOptions(options);
+        const uniqueOptions: OptionType[] = data
+          .filter(
+            (item: { name: string }, index: number, self: any) =>
+              index === self.findIndex((o: any) => o.name === item.name)
+          )
+          .map((item: { name: string }) => ({
+            value: item.name,
+            label: item.name,
+          }));
+        setOptions(uniqueOptions);
       }
     };
+
     if (inputValue.length > 0) {
       fetchAutocompleteData();
     }
   }, [inputValue]);
+
+  const handleSelectChange = (selectedOption: OptionType | null) => {
+    if (selectedOption) {
+      setCity(selectedOption.value);
+    }
+  };
 
   return (
     <div className="searchContainer">
@@ -45,7 +57,7 @@ function search(props: propsSearch) {
           placeholder="Search..."
           value={options.find((option) => option.value === inputValue)}
           options={options}
-          onChange={() => setCity(inputValue)}
+          onChange={handleSelectChange}
           onInputChange={(inputValue) => setInputValue(inputValue)}
         />
       </div>

@@ -1,9 +1,7 @@
 import "./App.css";
 import Card from "./components/card1";
 
-
-function App(props: any) {
-
+function App() {
   return (
     <div className="container">
       <div className="header">
