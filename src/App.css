@@ -22,8 +22,16 @@
   min-width: 25vw;
 }
 
-:focus {
+/* :focus {
   outline: solid rgba(176, 224, 230, 0.752);
+} */
+
+a {
+  text-decoration: none;
+}
+
+a:visited {
+  color: white
 }
 
 .CardContainer {

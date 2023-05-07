@@ -5,7 +5,7 @@ function App() {
   return (
     <div className="container">
       <div className="header">
-        <h1>WeatherWatch</h1>
+        <a href="/" title="main page"><h1>WeatherWatch</h1></a>
         <div className="navMenu">
           <a>Today</a>
           <a>Tommorow</a>

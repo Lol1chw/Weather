@@ -23,7 +23,7 @@ function card() {
       <div className="CardContainer">
         <div className="Card">
           <div className="geoLocation">
-            {`${weather.name}`}
+            {`${weather.name}, ${weather.country}`}
             <img src={geo}></img>
           </div>
           <div className="mainCenter">
