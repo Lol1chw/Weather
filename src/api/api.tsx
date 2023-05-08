@@ -1,3 +1,7 @@
+import.meta.env.VITE_API_KEY;
+export const keyAPI = import.meta.env.VITE_API_KEY;
+import axios from "axios";
+
 import {
   time2,
   makeIconUrl,
@@ -5,8 +9,7 @@ import {
   convertMbToMm,
 } from "./converters";
 
-import.meta.env.VITE_API_KEY;
-export const keyAPI = import.meta.env.VITE_API_KEY;
+
 
 interface location {
   country: string;
@@ -33,12 +36,15 @@ interface DataTypes {
   current: current;
 }
 
-export const getWeatherData = async (city: any) => {
+export const getWeatherData = async (city: string) => {
   const URL = `http://api.weatherapi.com/v1/current.json?key=${keyAPI}&lang=ru&q=${city}`;
 
-  const data = await fetch(URL)
-    .then((res) => res.json())
-    .then((data: any) => data);
+  const data = await axios.get(URL).then(res => {
+    return res.data
+  })
+  .catch(error => {
+    console.error(error)
+  })
 
   const {
     location: { country, name, localtime, region },
