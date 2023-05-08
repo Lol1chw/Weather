@@ -1,12 +1,14 @@
-import { useState, useEffect } from "react";
+import { useEffect } from "react";
 import { getWeatherData } from "../api/api";
 import thermometr from "../assets/thermometr2.svg";
 import geo from "../assets/geo.svg";
 import Search from "./search";
+import {selectors} from './store'
 
 function card() {
-  const [weather, setWeather]: any = useState("");
-  const [city, setCity]: any = useState("Новосибирск");
+  const weather = selectors.weather();
+  const setWeather = selectors.setWeather();
+  const city = selectors.city();
 
   // Fetch data. Check api.tsx
   useEffect(() => {
@@ -19,7 +21,7 @@ function card() {
 
   return (
     <div>
-      <Search setCity={setCity} />
+      <Search/>
       <div className="CardContainer">
         <div className="Card">
           <div className="geoLocation">
@@ -36,7 +38,7 @@ function card() {
               alt="icon display weather and time"
             ></img>
           </div>
-          <div className="dayInfo">{`${weather.localtime}`}</div>
+          {/* <div className="dayInfo">{`${weather.convertedTime}`}</div> */}
           <div className="nameBottom">
             <div className="dataBottom">{`Влажность ${weather.humidity}%`}</div>
             <div className="dataBottom">{`Видимость ${weather.vis_km} км`}</div>

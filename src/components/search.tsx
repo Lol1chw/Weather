@@ -1,12 +1,9 @@
-import { useState, useEffect } from "react";
+import { useEffect } from "react";
 import Select from "react-select";
 import.meta.env.VITE_API_KEY;
+import { selectors } from "./store";
 
 export const keyAPI = import.meta.env.VITE_API_KEY;
-
-interface propsSearch {
-  setCity: any;
-}
 
 interface OptionType {
   value: string;
@@ -21,13 +18,16 @@ interface parametrs {
   lon: number;
 }
 
-function search(props: propsSearch) {
-  const [inputValue, setInputValue] = useState("");
-  const [options, setOptions] = useState<OptionType[]>([]);
-  const { setCity } = props;
+function search() {
+  const setCity = selectors.setCity()
+  const setOptions = selectors.setOptions()
+  const setInputValue = selectors.setInputValue()
+  const options = selectors.options()
+  const inputValue = selectors.inputValue()
+ 
 
   useEffect(() => {
-    const fetchAutocompleteData = async () => {
+    async function fetchAutocompleteData() {
       const url = `http://api.weatherapi.com/v1/search.json?key=${keyAPI}&lang=ru&q=${inputValue}`;
       const response = await fetch(url);
       const data = await response.json();
@@ -38,14 +38,14 @@ function search(props: propsSearch) {
         }));
         setOptions(uniqueOptions);
       }
-    };
-
+    }
+    
     if (inputValue.length > 0) {
       fetchAutocompleteData();
     }
   }, [inputValue]);
 
-  const handleSelectChange = (selectedOption: OptionType | null) => {
+  const handleSelectChange = (selectedOption: OptionType | null | void) => {
     if (selectedOption) {
       setCity(selectedOption.value);
     }
@@ -56,8 +56,8 @@ function search(props: propsSearch) {
       <div className="searchPanel">
         <Select
           className="search"
-          placeholder="Search..."
-          value={options.find((option) => option.value === inputValue)}
+          placeholder="Search location..."
+          value={options.find((option: OptionType) => option.value === inputValue)}
           options={options}
           onChange={handleSelectChange}
           onInputChange={(inputValue) => setInputValue(inputValue)}
