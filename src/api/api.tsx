@@ -3,6 +3,7 @@ export const keyAPI = import.meta.env.VITE_API_KEY;
 import axios from "axios";
 
 import {
+  time,
   time2,
   makeIconUrl,
   convertMilesToMeters,
@@ -54,11 +55,16 @@ export const getWeatherData = async (city: string) => {
     },
   }: DataTypes = data;
 
+let stockTime = (time(localtime))
+let convertedTime = (time2(localtime))
+
   return {
     iconURL: makeIconUrl(icon),
     country,
     name,
-    localtime: time2(localtime),
+    localtime,
+    convertedTime,
+    stockTime,
     temp_c,
     text,
     wind_mph: convertMilesToMeters(wind_mph),

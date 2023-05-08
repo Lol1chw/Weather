@@ -10,7 +10,7 @@ function card() {
   const setWeather = selectors.setWeather();
   const city = selectors.city();
 
-  // Fetch data. Check api.tsx
+  // Fetch data. Extracting data from getWeatherData. Check api.tsx
   useEffect(() => {
     const fetchWeatherData = async () => {
       const data = await getWeatherData(city);
@@ -38,7 +38,7 @@ function card() {
               alt="icon display weather and time"
             ></img>
           </div>
-          {/* <div className="dayInfo">{`${weather.convertedTime}`}</div> */}
+          <div className="dayInfo">{`${weather.convertedTime}`}</div>
           <div className="nameBottom">
             <div className="dataBottom">{`Влажность ${weather.humidity}%`}</div>
             <div className="dataBottom">{`Видимость ${weather.vis_km} км`}</div>

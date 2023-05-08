@@ -1,9 +1,21 @@
-function time(localtime: string) {
-  return localtime.substring(11, 16);
+function time(time: string) {
+  const [hours, minutes] = time.substring(11,16).split(':');
+  let formattedHours = parseInt(hours, 10)
+  let suffix = 'am';
+  if(formattedHours >= 12) {
+    formattedHours -= 12;
+    suffix = 'pm'
+  }
+  if(formattedHours === 0) {
+    formattedHours = 12
+  }
+  
+const formattedTime = `${formattedHours.toString().padStart(2, '0')}:${minutes}`
+return `${formattedTime} ${suffix}`
 }
 
-function time2(vreamya: string): string {
-  const date = new Date(vreamya);
+function time2(localtime: string): string {
+  const date = new Date(localtime);
   const options: Intl.DateTimeFormatOptions = {
     month: "short",
     day: "numeric",
@@ -29,4 +41,4 @@ function convertMbToMm(mb: number): number {
 
 const makeIconUrl = (iconId: string) => `${iconId}`;
 
-export { time2, convertMilesToMeters, makeIconUrl, convertMbToMm };
+export { time2, time, convertMilesToMeters, makeIconUrl, convertMbToMm };
