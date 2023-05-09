@@ -1,17 +1,16 @@
 function time(time: string) {
-  const [hours, minutes] = time.substring(11,16).split(':');
-  let formattedHours = parseInt(hours, 10)
-  let suffix = 'am';
-  if(formattedHours >= 12) {
-    formattedHours -= 12;
-    suffix = 'pm'
-  }
-  if(formattedHours === 0) {
-    formattedHours = 12
-  }
-  
-const formattedTime = `${formattedHours.toString().padStart(2, '0')}:${minutes}`
-return `${formattedTime} ${suffix}`
+const date = new Date(time)
+let hours = date.getHours();
+let minutes: string | number = date.getMinutes();
+let amPm = hours >= 12 ? 'pm' : 'am';
+
+hours = hours % 12;
+hours = hours ? hours : 12;
+
+// adding a leading zero
+minutes = minutes < 10 ? '0' + minutes : minutes;
+const convertedTime = hours + ':' + minutes + '' +amPm;
+return convertedTime;
 }
 
 function time2(localtime: string): string {
