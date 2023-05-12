@@ -2,11 +2,9 @@ import axios from "axios";
 import { keyAPI } from "./api";
 import { selectors } from '../store/store'
 import forecast from "../components/forecast";
+import { makeIconUrl } from "./converters";
 
 interface forecastData {
-  location: {
-    country: string;
-  };
   forecast: {
     forecastday: [
       { hour: [{ time: string; temp_c: number; condition: {icon: string} }] }
@@ -28,7 +26,6 @@ export const getForecastData = async function() {
     
 
     const {
-        location: {country},
         forecast: { 
             forecastday:  [
                 { hour: [...resHours] }
@@ -37,8 +34,7 @@ export const getForecastData = async function() {
     }: forecastData = data
     
     return {
-        country,
-        forecast,
+        iconURL: makeIconUrl(resHours[0].condition.icon)
     }
 }
 

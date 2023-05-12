@@ -17,12 +17,13 @@ async function test () {
     .catch(error => {
         console.error(error)
     })
-
     return data
 }
 
   return (
-  <div></div>
+  <div>
+    
+  </div>
   )
 }
 
