@@ -1,30 +1,22 @@
-import axios from "axios";
 import { useEffect } from "react";
 import { getForecastData } from "../api/forecastApi";
-import { keyAPI } from "../api/api"
-
-
+import { forecastSelectors } from "../store/forecastStore";
+import { selectors } from "../store/store";
 
 function forecast() {
+  const option = forecastSelectors.option();
+  const setOption = forecastSelectors.setOption();
+  const city = selectors.city();
 
-async function test () {    
-    const forecastURL = `http://api.weatherapi.com/v1/forecast.json?key=${keyAPI}&q=Новосибирск&days=1&aqi=no&alerts=no`;
+  useEffect(() => {
+    const fetchForecastData = async () => {
+      const data = await getForecastData(city);
+      setOption(data);
+    };
+    fetchForecastData();
+  }, [city]);
 
-    const data = await axios.get(forecastURL)
-    .then(response => {
-        return response
-    })
-    .catch(error => {
-        console.error(error)
-    })
-    return data
-}
-
-  return (
-  <div>
-    
-  </div>
-  )
+  return <div></div>;
 }
 
 export default forecast;

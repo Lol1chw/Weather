@@ -38,7 +38,8 @@ interface DataTypes {
 export const getWeatherData = async (city: string) => {
   const URL = `http://api.weatherapi.com/v1/current.json?key=${keyAPI}&lang=ru&q=${city}`;
 
-  const data = await axios.get(URL).then(res => {
+  const data = await axios.get(URL)
+  .then(res => {
     return res.data
   })
   .catch(error => {
