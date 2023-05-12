@@ -3,7 +3,7 @@ import { getWeatherData } from "../api/api";
 import thermometr from "../assets/thermometr2.svg";
 import geo from "../assets/geo.svg";
 import Search from "./search";
-import {selectors} from './store'
+import { selectors } from "../store/store";
 
 function card() {
   const weather = selectors.weather();
@@ -21,7 +21,7 @@ function card() {
 
   return (
     <div>
-      <Search/>
+      <Search />
       <div className="CardContainer">
         <div className="Card">
           <div className="geoLocation">

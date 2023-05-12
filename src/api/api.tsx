@@ -10,8 +10,6 @@ import {
   convertMbToMm,
 } from "./converters";
 
-
-
 interface location {
   country: string;
   name: string;

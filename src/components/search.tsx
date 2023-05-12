@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import Select from "react-select";
 import.meta.env.VITE_API_KEY;
-import { selectors } from "./store";
+import { selectors } from "../store/store";
 
 export const keyAPI = import.meta.env.VITE_API_KEY;
 
@@ -19,12 +19,11 @@ interface parametrs {
 }
 
 function search() {
-  const setCity = selectors.setCity()
-  const setOptions = selectors.setOptions()
-  const setInputValue = selectors.setInputValue()
-  const options = selectors.options()
-  const inputValue = selectors.inputValue()
- 
+  const setCity = selectors.setCity();
+  const setOptions = selectors.setOptions();
+  const setInputValue = selectors.setInputValue();
+  const options = selectors.options();
+  const inputValue = selectors.inputValue();
 
   useEffect(() => {
     async function fetchAutocompleteData() {
@@ -39,7 +38,7 @@ function search() {
         setOptions(uniqueOptions);
       }
     }
-    
+
     if (inputValue.length > 0) {
       fetchAutocompleteData();
     }
@@ -57,7 +56,9 @@ function search() {
         <Select
           className="search"
           placeholder="Search location..."
-          value={options.find((option: OptionType) => option.value === inputValue)}
+          value={options.find(
+            (option: OptionType) => option.value === inputValue
+          )}
           options={options}
           onChange={handleSelectChange}
           onInputChange={(inputValue) => setInputValue(inputValue)}
