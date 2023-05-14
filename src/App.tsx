@@ -1,10 +1,12 @@
-import "./App.css";
+import "./styles/App.css";
+import Search from "./components/search";
 import Card from "./components/card1";
 import Forecast from "./components/forecast";
 import { selectors } from "./store/store";
 
 function App() {
   const weather = selectors.weather();
+  
   return (
     <div className="container">
       <div className="header">
@@ -14,11 +16,12 @@ function App() {
           </a>
           <span>{`${weather.stockTime}`}</span>
         </div>
-        <div className="navMenu">
+        <div className="navigationMenu">
           <a>Today</a>
           <a>Tommorow</a>
         </div>
       </div>
+      <Search/>
       <Card />
       <Forecast />
     </div>

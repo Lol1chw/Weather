@@ -1,5 +1,10 @@
+* {
+  box-sizing: border-box;
+}
+
 body {
-  font-family: Inter, Avenir, Helvetica, Arial, sans-serif;
+  /* font-family: Inter, Avenir, Helvetica, Arial, sans-serif; */
+  font-family: "Poppins", sans-serif;
   font-size: 16px;
   line-height: 24px;
   font-weight: 400;
@@ -9,12 +14,22 @@ body {
   height: 100vh;
   grid-template-rows: auto 1fr auto;
 
-  background: #252323;
+  background: rgba(37, 35, 35, 1);
 
+  color: white;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   -webkit-text-size-adjust: 100%;
+}
+
+a:link {
+  text-decoration: none;
+}
+
+a:visited {
+  color: white;
+  text-decoration: none;
 }
 
 /* @media (prefers-color-scheme: light) {

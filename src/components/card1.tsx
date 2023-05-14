@@ -2,7 +2,6 @@ import { useEffect } from "react";
 import { getWeatherData } from "../api/api";
 import thermometr from "../assets/thermometr2.svg";
 import geo from "../assets/geo.svg";
-import Search from "./search";
 import { selectors } from "../store/store";
 
 function card() {
@@ -10,7 +9,6 @@ function card() {
   const setWeather = selectors.setWeather();
   const city = selectors.city();
 
-  // Fetch data. Extracting data from getWeatherData. Check api.tsx
   useEffect(() => {
     const fetchWeatherData = async () => {
       const data = await getWeatherData(city);
@@ -21,14 +19,13 @@ function card() {
 
   return (
     <div>
-      <Search />
       <div className="CardContainer">
         <div className="Card">
           <div className="geoLocation">
             {`${weather.name}, ${weather.country}`}
             <img src={geo}></img>
           </div>
-          <div className="mainCenter">
+          <div className="mainInfoTemp">
             <img src={thermometr} width="44px" height="44px"></img>
             {`${weather.temp_c}°C`}
             <img
@@ -39,11 +36,11 @@ function card() {
             ></img>
           </div>
           <div className="dayInfo">{`${weather.convertedTime}`}</div>
-          <div className="nameBottom">
-            <div className="dataBottom">{`Влажность ${weather.humidity}%`}</div>
-            <div className="dataBottom">{`Видимость ${weather.vis_km} км`}</div>
-            <div className="dataBottom">{`Давление ${weather.pressure_mb} мм`}</div>
-            <div className="dataBottom">{`Ветер ${weather.wind_mph} м/с`}</div>
+          <div className="moreWeatherInfo">
+            <div className="blockWeatherInfo">{`Влажность ${weather.humidity}%`}</div>
+            <div className="blockWeatherInfo">{`Видимость ${weather.vis_km} км`}</div>
+            <div className="blockWeatherInfo">{`Давление ${weather.pressure_mb} мм`}</div>
+            <div className="blockWeatherInfo">{`Ветер ${weather.wind_mph} м/с`}</div>
           </div>
         </div>
       </div>

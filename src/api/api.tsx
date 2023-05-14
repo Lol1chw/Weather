@@ -38,13 +38,14 @@ interface DataTypes {
 export const getWeatherData = async (city: string) => {
   const URL = `http://api.weatherapi.com/v1/current.json?key=${keyAPI}&lang=ru&q=${city}`;
 
-  const data = await axios.get(URL)
-  .then(res => {
-    return res.data
-  })
-  .catch(error => {
-    console.error(error)
-  })
+  const data = await axios
+    .get(URL)
+    .then((res) => {
+      return res.data;
+    })
+    .catch((error) => {
+      console.error(error);
+    });
 
   const {
     location: { country, name, localtime, region },
@@ -54,8 +55,8 @@ export const getWeatherData = async (city: string) => {
     },
   }: DataTypes = data;
 
-let stockTime = (time(localtime))
-let convertedTime = (time2(localtime))
+  let stockTime = time(localtime);
+  let convertedTime = time2(localtime);
 
   return {
     iconURL: makeIconUrl(icon),
