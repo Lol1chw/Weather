@@ -1,4 +1,4 @@
-function time(time: string) {
+function pmAmFormat(time: string) {
   const date = new Date(time);
   let hours = date.getHours();
   let minutes: string | number = date.getMinutes();
@@ -13,7 +13,7 @@ function time(time: string) {
   return convertedTime;
 }
 
-function time2(localtime: string): string {
+function formatDateLocale(localtime: string): string {
   const date = new Date(localtime);
   const options: Intl.DateTimeFormatOptions = {
     month: "short",
@@ -40,4 +40,18 @@ function convertMbToMm(mb: number): number {
 
 const makeIconUrl = (iconId: string) => `${iconId}`;
 
-export { time2, time, convertMilesToMeters, makeIconUrl, convertMbToMm };
+function roundTemp(temp: number | undefined): number | undefined {
+  if (typeof temp !== "number") {
+    return undefined;
+  }
+  return Math.round(temp);
+}
+
+export {
+  pmAmFormat,
+  formatDateLocale,
+  convertMilesToMeters,
+  makeIconUrl,
+  convertMbToMm,
+  roundTemp,
+};
