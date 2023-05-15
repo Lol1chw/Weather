@@ -1,12 +1,12 @@
 import "./styles/App.css";
 import Search from "./components/search";
 import Card from "./components/card1";
-import Forecast from "./components/forecast";
+import MiniCards from "./components/miniCards";
 import { selectors } from "./store/store";
 
 function App() {
   const weather = selectors.weather();
-  
+
   return (
     <div className="container">
       <div className="header">
@@ -21,9 +21,9 @@ function App() {
           <a>Tommorow</a>
         </div>
       </div>
-      <Search/>
+      <Search />
       <Card />
-      <Forecast />
+      <MiniCards />
     </div>
   );
 }
