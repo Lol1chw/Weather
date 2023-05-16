@@ -9,7 +9,7 @@ import {
   convertMbToMm,
   formatDateLocale,
   roundTemp,
-} from "./converters";
+} from "../converters/converters";
 
 interface location {
   country: string;

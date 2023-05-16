@@ -1,6 +1,6 @@
 import "./styles/App.css";
 import Search from "./components/search";
-import Card from "./components/card1";
+import Card from "./components/card";
 import MiniCards from "./components/miniCards";
 import { selectors } from "./store/store";
 

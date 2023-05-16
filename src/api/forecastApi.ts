@@ -1,6 +1,6 @@
 import axios from "axios";
 import { keyAPI } from "./api";
-import { makeIconUrl } from "./converters";
+import { makeIconUrl } from "../converters/converters";
 
 interface WeatherData {
   [key: string]: string | number;

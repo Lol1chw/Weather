@@ -1,9 +1,9 @@
-import '../styles/forecast.css'
+import "../styles/forecast.css";
 import { useEffect } from "react";
 import { getForecastData } from "../api/forecastApi";
 import { forecastSelectors } from "../store/forecastStore";
 import { selectors } from "../store/store";
-import { pmAmFormat, roundTemp } from "../api/converters";
+import { pmAmFormat, roundTemp } from "../converters/converters";
 
 interface ForecastProps {
   time: string;

@@ -11,8 +11,8 @@ type Store = {
     setWeather: (data: any) => void
 }
 
-export const useStore = create<Store>((set, get) => ({
-    city: 'Новосибирск',
+export const useStore = create<Store>((set) => ({
+    city: 'auto:ip',
     setCity: (value: string) => set(() => ({ city: value})),
     options: [],
     setOptions: (uniqueOptions: any) => set(() => ({ options: uniqueOptions })),
