@@ -20,6 +20,7 @@ interface location {
 
 interface current {
   temp_c: number;
+  temp_f: number;
   wind_mph: number;
   humidity: number;
   feelslike_c: number;
@@ -50,7 +51,15 @@ export const getWeatherData = async (city: string) => {
 
   const {
     location: { country, name, localtime, region },
-    current: { temp_c, wind_mph, humidity, feelslike_c, vis_km, pressure_mb },
+    current: {
+      temp_c,
+      temp_f,
+      wind_mph,
+      humidity,
+      feelslike_c,
+      vis_km,
+      pressure_mb,
+    },
     current: {
       condition: { icon, text },
     },
@@ -67,6 +76,7 @@ export const getWeatherData = async (city: string) => {
     convertedTime,
     stockTime,
     temp_c: roundTemp(temp_c),
+    temp_f: roundTemp(temp_f),
     text,
     wind_mph: convertMilesToMeters(wind_mph),
     humidity,

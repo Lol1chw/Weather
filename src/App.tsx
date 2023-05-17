@@ -2,6 +2,7 @@ import "./styles/App.css";
 import Search from "./components/search";
 import Card from "./components/card";
 import MiniCards from "./components/miniCards";
+import ToggleTemp from "./components/temperatureButton";
 import { selectors } from "./store/store";
 
 function App() {
@@ -10,6 +11,7 @@ function App() {
   return (
     <div className="container">
       <div className="header">
+        <ToggleTemp />
         <div className="tittle">
           <a href="/" title="Главная страница">
             <h1>WeatherWatch</h1>

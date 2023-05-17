@@ -8,6 +8,9 @@ function card() {
   const weather = selectors.weather();
   const setWeather = selectors.setWeather();
   const city = selectors.city();
+  const isCelsius = selectors.isCelsius();
+
+  const temperature = isCelsius ? `${weather.temp_c}°C` : `${weather.temp_f}°F`;
 
   useEffect(() => {
     const fetchWeatherData = async () => {
@@ -27,7 +30,7 @@ function card() {
           </div>
           <div className="mainInfoTemp">
             <img src={thermometr} width="44px" height="44px"></img>
-            {`${weather.temp_c}°C`}
+            <div>{temperature}</div>
             <img
               src={weather.iconURL}
               width="64px"
