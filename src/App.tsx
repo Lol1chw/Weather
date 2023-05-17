@@ -11,7 +11,6 @@ function App() {
   return (
     <div className="container">
       <div className="header">
-        <ToggleTemp />
         <div className="tittle">
           <a href="/" title="Главная страница">
             <h1>WeatherWatch</h1>
@@ -23,6 +22,7 @@ function App() {
           <a>Tommorow</a>
         </div>
       </div>
+      <ToggleTemp />
       <Search />
       <Card />
       <MiniCards />
