@@ -12,6 +12,7 @@ interface HourData {
     icon: string;
   };
   temp_c: number;
+  temp_f: number;
 }
 
 interface ForecastDayData {
@@ -45,16 +46,19 @@ export const getForecastData = async function (city: string) {
   const times = [];
   const icons = [];
   const temp_c = [];
+  const temp_f = [];
 
   for (let i = 1; i <= 22; i += 3) {
     const {
       time,
       condition: { icon },
-      temp_c: temperature,
+      temp_c: temperature_c,
+      temp_f: temperature_f,
     } = hour[i];
     times.push(time);
     icons.push(makeIconUrl(icon));
-    temp_c.push(temperature);
+    temp_c.push(temperature_c);
+    temp_f.push(temperature_f);
   }
 
   const formatData = (prefix: string, values: (string | number)[]) => {
@@ -70,6 +74,6 @@ export const getForecastData = async function (city: string) {
   const timeData = formatData("time", times);
   const iconData = formatData("icon", icons);
   const tempData = formatData("temp_c", temp_c);
-
-  return { ...timeData, ...iconData, ...tempData };
+  const tempfData = formatData("temp_f", temp_f);
+  return { ...timeData, ...iconData, ...tempData, ...tempfData };
 };
