@@ -6,15 +6,26 @@ function weatherToggle() {
 
   const handleClick = (event: any) => {
     event.preventDefault();
-    toggleDate(event.target.innerText === "Today");
+    const selectedOption = event.target.innerText;
+    if (selectedOption === "Today" && !isToday) {
+      toggleDate(true);
+    } else if (selectedOption === "Tommorow" && isToday) {
+      toggleDate(false);
+    }
   };
 
   const todayButtonStyle = {
-    textDecoration: isToday ? "underline" : "none",
+    textDecoration: isToday ? "link-like" : "none",
+    fontWeight: isToday ? "700" : "300",
+    cursor: "pointer",
+    borderBottom: isToday ? "3px solid #695D5D" : "",
   };
 
   const tommorowButtonStyle = {
-    textDecoration: isToday ? "none" : "underline",
+    textDecoration: isToday ? "none" : "link-like",
+    fontWeight: isToday ? "300" : "700",
+    cursor: "pointer",
+    borderBottom: isToday ? "" : "3px solid #695D5D",
   };
 
   return (
