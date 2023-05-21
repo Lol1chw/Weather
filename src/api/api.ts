@@ -23,7 +23,6 @@ interface current {
   temp_f: number;
   wind_mph: number;
   humidity: number;
-  feelslike_c: number;
   vis_km: number;
   pressure_mb: number;
   condition: {
@@ -38,7 +37,7 @@ interface DataTypes {
 }
 
 export const getWeatherData = async (city: string) => {
-  const URL = `http://api.weatherapi.com/v1/current.json?key=${keyAPI}&lang=ru&q=${city}`;
+  const URL = `https://api.weatherapi.com/v1/current.json?key=${keyAPI}&lang=ru&q=${city}`;
 
   const data = await axios
     .get(URL)
@@ -56,7 +55,6 @@ export const getWeatherData = async (city: string) => {
       temp_f,
       wind_mph,
       humidity,
-      feelslike_c,
       vis_km,
       pressure_mb,
     },
@@ -81,7 +79,6 @@ export const getWeatherData = async (city: string) => {
     wind_mph: convertMilesToMeters(wind_mph),
     humidity,
     vis_km,
-    feelslike_c,
     pressure_mb: convertMbToMm(pressure_mb),
     region,
   };

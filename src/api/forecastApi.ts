@@ -26,7 +26,7 @@ interface ForecastData {
 }
 
 export const getForecastData = async function (city: string) {
-  const forecastURL = `http://api.weatherapi.com/v1/forecast.json?key=${keyAPI}&q=${city}&days=1&aqi=no&alerts=no`;
+  const forecastURL = `https://api.weatherapi.com/v1/forecast.json?key=${keyAPI}&q=${city}&days=1&aqi=no&alerts=no`;
 
   const data = await axios
     .get(forecastURL)

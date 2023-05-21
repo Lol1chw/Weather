@@ -23,7 +23,7 @@ export const useStore = create<Store>((set) => ({
   weather: {},
   setWeather: (data: any) => set(() => ({ weather: data })),
   isCelsius: true,
-  toggleFormat: () => set((state) => ({ isCelsius: !state.isCelsius}))
+  toggleFormat: () => set((state) => ({ isCelsius: !state.isCelsius })),
 }));
 
 export const selectors = {
