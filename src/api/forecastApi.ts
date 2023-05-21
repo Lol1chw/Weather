@@ -25,8 +25,19 @@ interface ForecastData {
   };
 }
 
+interface ElementsData {
+  times: string[];
+  icons: string[];
+  temp_c: number[];
+  temp_f: number[];
+  timesD2: string[];
+  iconsD2: string[];
+  temp_cD2: number[];
+  temp_fD2: number[];
+}
+
 export const getForecastData = async function (city: string) {
-  const forecastURL = `https://api.weatherapi.com/v1/forecast.json?key=${keyAPI}&q=${city}&days=1&aqi=no&alerts=no`;
+  const forecastURL = `https://api.weatherapi.com/v1/forecast.json?key=${keyAPI}&q=${city}&days=2&aqi=no&alerts=no`;
 
   const data = await axios
     .get(forecastURL)
@@ -43,22 +54,41 @@ export const getForecastData = async function (city: string) {
     },
   }: ForecastData = data;
 
-  const times = [];
-  const icons = [];
-  const temp_c = [];
-  const temp_f = [];
+  const elementsData: ElementsData = {
+    times: [],
+    icons: [],
+    temp_c: [],
+    temp_f: [],
+    timesD2: [],
+    iconsD2: [],
+    temp_cD2: [],
+    temp_fD2: [],
+  };
 
-  for (let i = 1; i <= 22; i += 3) {
+  for (let i = 1, j = 1; i <= 22 && j <= 22; i += 3, j += 3) {
     const {
-      time,
-      condition: { icon },
-      temp_c: temperature_c,
-      temp_f: temperature_f,
+      time: time1,
+      condition: { icon: icon1 },
+      temp_c: temperature_c1,
+      temp_f: temperature_f1,
     } = hour[i];
-    times.push(time);
-    icons.push(makeIconUrl(icon));
-    temp_c.push(temperature_c);
-    temp_f.push(temperature_f);
+
+    const {
+      time: time2,
+      condition: { icon: icon2 },
+      temp_c: temperature_c2,
+      temp_f: temperature_f2,
+    } = data.forecast.forecastday[1].hour[j];
+
+    elementsData.times.push(time1);
+    elementsData.icons.push(makeIconUrl(icon1));
+    elementsData.temp_c.push(temperature_c1);
+    elementsData.temp_f.push(temperature_f1);
+
+    elementsData.timesD2.push(time2);
+    elementsData.iconsD2.push(makeIconUrl(icon2));
+    elementsData.temp_cD2.push(temperature_c2);
+    elementsData.temp_fD2.push(temperature_f2);
   }
 
   const formatData = (prefix: string, values: (string | number)[]) => {
@@ -70,10 +100,25 @@ export const getForecastData = async function (city: string) {
 
     return formattedData;
   };
+  console.log(elementsData);
+  const timeDataD2 = formatData("timeDay2_", elementsData.timesD2);
+  const iconDataD2 = formatData("iconDay2_", elementsData.iconsD2);
+  const tempcDataD2 = formatData("temp_cDay2_", elementsData.temp_cD2);
+  const tempfDataD2 = formatData("temp_fDay2_", elementsData.temp_fD2);
 
-  const timeData = formatData("time", times);
-  const iconData = formatData("icon", icons);
-  const tempData = formatData("temp_c", temp_c);
-  const tempfData = formatData("temp_f", temp_f);
-  return { ...timeData, ...iconData, ...tempData, ...tempfData };
+  const timeData = formatData("time", elementsData.times);
+  const iconData = formatData("icon", elementsData.icons);
+  const tempcData = formatData("temp_c", elementsData.temp_c);
+  const tempfData = formatData("temp_f", elementsData.temp_f);
+
+  return {
+    ...timeData,
+    ...iconData,
+    ...tempcData,
+    ...tempfData,
+    ...timeDataD2,
+    ...iconDataD2,
+    ...tempcDataD2,
+    ...tempfDataD2,
+  };
 };
