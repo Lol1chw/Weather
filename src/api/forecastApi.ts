@@ -91,6 +91,14 @@ export const getForecastData = async function (city: string) {
     elementsData.temp_fD2.push(temperature_f2);
   }
 
+  const {date,
+    day: {avghumidity, avgtemp_c, avgtemp_f, avgvis_km,
+      condition: { icon },
+    },
+  } = data.forecast.forecastday[1];
+
+  const forMainCardData = { date, avghumidity, avgtemp_c, avgtemp_f, avgvis_km, icon };
+
   const formatData = (prefix: string, values: (string | number)[]) => {
     const formattedData: WeatherData = {};
     values.forEach((value, index) => {
@@ -100,7 +108,7 @@ export const getForecastData = async function (city: string) {
 
     return formattedData;
   };
-  console.log(elementsData);
+  
   const timeDataD2 = formatData("timeDay2_", elementsData.timesD2);
   const iconDataD2 = formatData("iconDay2_", elementsData.iconsD2);
   const tempcDataD2 = formatData("temp_cDay2_", elementsData.temp_cD2);
@@ -120,5 +128,6 @@ export const getForecastData = async function (city: string) {
     ...iconDataD2,
     ...tempcDataD2,
     ...tempfDataD2,
+    ...forMainCardData
   };
 };
