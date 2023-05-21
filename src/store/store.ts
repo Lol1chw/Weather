@@ -11,6 +11,8 @@ type Store = {
   setWeather: (data: any) => void;
   isCelsius: boolean;
   toggleFormat: () => void;
+  isToday: boolean;
+  toggleDate: (event: boolean) => void;
 };
 
 export const useStore = create<Store>((set) => ({
@@ -24,6 +26,8 @@ export const useStore = create<Store>((set) => ({
   setWeather: (data: any) => set(() => ({ weather: data })),
   isCelsius: true,
   toggleFormat: () => set((state) => ({ isCelsius: !state.isCelsius })),
+  isToday: true,
+  toggleDate: (event) => set((state) => ({isToday: !state.isToday}))
 }));
 
 export const selectors = {
@@ -41,6 +45,9 @@ export const selectors = {
 
   isCelsius: () => useStore((state) => state.isCelsius),
   toggleFormat: () => useStore((state) => state.toggleFormat),
+
+  isToday: () => useStore((state) => state.isToday),
+  toggleDate: () => useStore((state) => state.toggleDate),
 };
 
 export type { Store };

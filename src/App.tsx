@@ -3,6 +3,7 @@ import Search from "./components/search";
 import Card from "./components/card";
 import MiniCards from "./components/miniCards";
 import ToggleTemp from "./components/temperatureButton";
+import ToggleWeather from './components/weatherToggle'
 import { selectors } from "./store/store";
 
 function App() {
@@ -17,10 +18,7 @@ function App() {
           </a>
           <span>{`${weather.stockTime}`}</span>
         </div>
-        <div className="navigationMenu">
-          <a>Today</a>
-          <a>Tommorow</a>
-        </div>
+        <ToggleWeather />
       </div>
       <ToggleTemp />
       <Search />

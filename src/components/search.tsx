@@ -27,7 +27,7 @@ function search() {
 
   useEffect(() => {
     async function fetchAutocompleteData() {
-      const url = `http://api.weatherapi.com/v1/search.json?key=${keyAPI}&lang=ru&q=${inputValue}`;
+      const url = `https://api.weatherapi.com/v1/search.json?key=${keyAPI}&lang=ru&q=${inputValue}`;
       const response = await fetch(url);
       const data = await response.json();
       if (data) {
