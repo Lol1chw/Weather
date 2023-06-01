@@ -31,7 +31,7 @@ function card() {
         <div className="Card">
           <div className="geoLocation">
             {`${weather.name}, ${weather.country}`}
-            <img alt="geolocation marker icon" src={geo}></img>
+            <img alt="geolocation marker icon" width="19" height="27"src={geo}></img>
           </div>
           <div className="mainInfoTemp">
             <img alt="thermometer temperature icon" src={thermometr} width="44px" height="44px"></img>
