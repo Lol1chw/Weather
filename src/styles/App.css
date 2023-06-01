@@ -1,6 +1,7 @@
 .header {
   display: flex;
   justify-content: space-evenly;
+  padding-top: 10px;
 }
 
 .header h1 {
@@ -11,6 +12,12 @@
   font-weight: 400;
 }
 
+.header .time {
+  font-size: 19px;
+  font-weight: 600;
+  align-self: flex-end;
+}
+
 .header span {
   font-size: 1.18em;
   font-weight: 600;
@@ -19,7 +26,6 @@
 .tittle {
   display: flex;
   flex-direction: column;
-  align-items: flex-end;
 }
 
 .navigationMenu {
@@ -69,7 +75,7 @@
 
   padding: 38px 28px;
   border-radius: 32px;
-  width: 30vw;
+  overflow: hidden;
 
   font-size: 1.8em;
 }
@@ -103,26 +109,12 @@
   text-decoration-line: underline;
 }
 
-.moreWeatherInfo {
-  display: flex;
-  font-size: 1vw;
-  justify-content: space-between;
-
-  font-weight: 500;
-}
-
-.blockWeatherInfo {
-  text-align: center;
-  width: min-content;
-}
-
 .tempButton {
   display: flex;
   align-items: center;
-  
+
   font-size: 1.25em;
   gap: 5px;
-  margin-left: 25vw;
 }
 
 .toggle-ball {
@@ -139,4 +131,105 @@
 
 .fahrenheit {
   transform: translateX(66px);
+}
+
+@media only screen and (min-width: 1100px) {
+  .Card {
+    width: 30vw;
+    max-width: 1200px;
+  }
+  
+  .moreWeatherInfo {
+    display: flex; 
+    font-size: 19px;
+    justify-content: space-between;
+    font-weight: 500; 
+  }
+
+  .blockWeatherInfo {
+  text-align: center;
+  width: min-content;
+  }
+}
+
+@media only screen and (max-width: 1100px) {
+.moreWeatherInfo {
+  display: flex;
+  flex-wrap: wrap;
+  font-size: 19px;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+  font-weight: 500;
+}
+
+.blockWeatherInfo {
+  text-align: center;
+  width: 100%;
+  max-width: 200px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+  .Card {
+    width: 40vw;
+    max-width: 1000px;
+  }
+}
+
+@media only screen and (min-width: 768px) {
+  .Card {
+    width: 60vw;
+    max-width: 800px;
+  }
+  .moreWeatherInfo {
+    gap: 4px;
+  }
+}
+@media only screen and (max-width:  700px) {
+  .header .time {
+    align-self: center;
+    margin-bottom: 10px;
+  }
+
+  .Card {
+    width: 80vw;
+  }
+
+  .tittle h1 {
+    display: none;
+  }
+}
+
+@media only screen and (max-width: 420px) {
+  .moreWeatherInfo {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 5px;
+  }
+
+  .header .time {
+    align-self: center;
+    margin-bottom: 10px;
+  }
+
+  .blockWeatherInfo {
+    max-width: 100%;
+    width: auto;
+  }
+
+  .tittle h1{
+    display: none;
+  }
+  
+  .Card {
+  font-size: 1.5em;
+  line-height: 1.2;
+  }
+
+  .navigationMenu {
+    font-size: 18px;
+    flex-direction: column;
+  }
 }

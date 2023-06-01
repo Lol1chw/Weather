@@ -13,14 +13,14 @@ function App() {
     <div className="container">
       <div className="header">
         <div className="tittle">
-          <a href="/" title="Главная страница">
+          <a title="Главная страница">
             <h1>WeatherWatch</h1>
           </a>
-          <span>{`${weather.stockTime}`}</span>
+          <span className="time">{`${weather.stockTime}`}</span>
+          <ToggleTemp />
         </div>
         <ToggleWeather />
       </div>
-      <ToggleTemp />
       <Search />
       <Card />
       <MiniCards />
