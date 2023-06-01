@@ -25,7 +25,7 @@ function toggleTemp() {
   return (
     <div className="tempButton">
       <span>°C</span>
-      <button style={buttonStyle} onClick={handleClick}>
+      <button title="toggle temperature button" style={buttonStyle} onClick={handleClick}>
         <div
           className={`toggle-ball ${isCelsius ? "celsius" : "fahrenheit"}`}
         />

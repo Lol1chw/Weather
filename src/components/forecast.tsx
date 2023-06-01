@@ -28,7 +28,7 @@ function forecast({ time, icon, temp_c }: ForecastProps) {
       <div className="mini">
         <p>{pmAmFormat(time)}</p>
         <div className="iconForecast">
-          <img src={icon} width="64px" height="64px" />
+          <img alt="icon display weather and time" src={icon} width="64px" height="64px" />
         </div>
         <div className="temp">{`${roundTemp(temp_c)}°`}</div>
       </div>

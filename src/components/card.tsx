@@ -31,10 +31,10 @@ function card() {
         <div className="Card">
           <div className="geoLocation">
             {`${weather.name}, ${weather.country}`}
-            <img src={geo}></img>
+            <img alt="geolocation marker icon" src={geo}></img>
           </div>
           <div className="mainInfoTemp">
-            <img src={thermometr} width="44px" height="44px"></img>
+            <img alt="thermometer temperature icon" src={thermometr} width="44px" height="44px"></img>
             <div>{isToday ? temperature : avgTemperature}</div>
             <img
               src={isToday ? weather.iconURL : option.icon}
