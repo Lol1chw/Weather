@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import Select from "react-select";
 import.meta.env.VITE_API_KEY;
 import { selectors } from "../store/store";
-
+import magnifierIcon from "../assets/magnifier.svg"
 export const keyAPI = import.meta.env.VITE_API_KEY;
 
 interface OptionType {
@@ -50,6 +50,20 @@ function search() {
     }
   };
 
+const customStyleSearch = {
+  control: (styles: any) => ({
+    ...styles,
+    background: "#D9D9D9",
+    backgroundImage: `url(${magnifierIcon})`,
+    backgroundSize: "16px 16px",
+    backgroundRepeat: "no-repeat",
+    backgroundPosition: "5px",
+    paddingLeft: "15px",
+    borderRadius: '25px',
+    minWidth: "250px",
+  }),
+}
+
   return (
     <div className="searchContainer">
       <div className="searchPanel">
@@ -60,6 +74,7 @@ function search() {
             (option: OptionType) => option.value === inputValue
           )}
           options={options}
+          styles={customStyleSearch}
           onChange={handleSelectChange}
           onInputChange={(inputValue) => setInputValue(inputValue)}
         />
