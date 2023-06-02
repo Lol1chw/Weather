@@ -13,9 +13,7 @@ function App() {
     <div className="container">
       <div className="header">
         <div className="tittle">
-          <a title="Главная страница">
             <h1>WeatherWatch</h1>
-          </a>
           <span className="time">{`${weather.stockTime}`}</span>
           <ToggleTemp />
         </div>

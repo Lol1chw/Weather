@@ -30,12 +30,12 @@ function weatherToggle() {
 
   return (
     <div className="navigationMenu">
-      <a style={todayButtonStyle} onClick={handleClick}>
+      <button style={todayButtonStyle} onClick={handleClick}>
         Today
-      </a>
-      <a style={tommorowButtonStyle} onClick={handleClick}>
+      </button>
+      <button style={tommorowButtonStyle} onClick={handleClick}>
         Tommorow
-      </a>
+      </button>
     </div>
   );
 }
