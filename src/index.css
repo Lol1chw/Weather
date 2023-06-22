@@ -10,7 +10,6 @@ body {
   font-synthesis: none;
 
   display: grid;
-  height: 100vh;
   grid-template-rows: auto 1fr auto;
 
   background: rgba(37, 35, 35, 1);
@@ -21,7 +20,6 @@ body {
   -moz-osx-font-smoothing: grayscale;
   -webkit-text-size-adjust: 100%;
 
-  overflow: hidden;
 }
 
 a:link {
@@ -32,16 +30,3 @@ a:visited {
   color: #FFFFFF;
   text-decoration: none;
 }
-
-/* @media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
-  }
-  a:hover {
-    color: #747bff;
-  }
-  button {
-    background-color: #f9f9f9;
-  }
-} */
