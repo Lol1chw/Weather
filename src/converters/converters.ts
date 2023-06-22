@@ -38,7 +38,7 @@ function convertMbToMm(mb: number): number {
   return parseFloat(mmHg.toFixed(1));
 }
 
-const makeIconUrl = (iconId: string) => `${iconId}`;
+const makeIconUrl = (iconId: string) => `https:${iconId}`;
 
 function roundTemp(temp: number | undefined): number | undefined {
   if (typeof temp !== "number") {
